@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+    RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(jpg|jpeg|gif|png|ico)$ sourse/image/$1$2
+    RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(js|css|swf)$ sourse/$1$2
+
+# === image file ===
+    RewriteCond %{REQUEST_URI} \.(jpg|jpeg|gif|png|ico)$ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule .*$ /index.php?c=main&m=img [L]
+
+# === other file ===
+    RewriteCond %{REQUEST_URI} \.(js|css|swf|txt)$ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule .*$ /index.php?c=main&m=file [L]
+
+    
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?c=main&m=index [L]
+    
+    #ErrorDocument 404 /index.php?c=main&m=index
+</IfModule>
+
+
+Options -Indexes
