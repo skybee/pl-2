@@ -4,8 +4,8 @@
     RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
     RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
-    RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(jpg|jpeg|gif|png|ico)$ sourse/image/$1$2
-    RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(js|css|swf)$ sourse/$1$2
+    RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(jpg|jpeg|gif|png|ico)$ sourse/%{HTTP_HOST}/image/$1$2
+    RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(js|css|swf)$ sourse/%{HTTP_HOST}/file/$1$2
 
 # === image file ===
     RewriteCond %{REQUEST_URI} \.(jpg|jpeg|gif|png|ico)$ [NC]

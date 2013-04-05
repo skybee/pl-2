@@ -13,6 +13,7 @@ class main extends CI_Controller{
         $this->load->library('clean_lib');
         $this->load->library('subdomain_lib');
         $this->load->library('file_load_lib');
+        $this->load->library('domain_alias_lib');
         $this->load->helper( 'clean/'.$this->config->item('clean_helper') );
         $this->load->helper( 'clean/'.$this->config->item('clean_js_helper') );
         $this->load->helper( 'add/'.$this->config->item('add_helper') );
@@ -60,7 +61,7 @@ class main extends CI_Controller{
                 header($location);
                 exit();
             }
-            else { show_404('333'); } 
+            else { show_404(); } 
             exit();
         }
         // </ check empty & 301 > //
@@ -92,7 +93,7 @@ class main extends CI_Controller{
         $fname  = $this->file_load_lib->get_file_name( $this->donor_url );
         $c_type = $this->file_load_lib->get_file_type( $fname );
         
-        file_put_contents('sourse/image/'.$fname, $data);
+        file_put_contents('sourse/'.$this->config->item('site_domain').'/image/'.$fname, $data);
         
         header('Content-type:'.$c_type.';');
         echo $data;
@@ -111,7 +112,7 @@ class main extends CI_Controller{
                 $data = clean_js($data);
         }
         
-        file_put_contents('sourse/'.$fname, $data);
+        file_put_contents('sourse/'.$this->config->item('site_domain').'/file/'.$fname, $data);
         
         
         header('Content-type:'.$c_type.';');

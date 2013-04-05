@@ -10,7 +10,7 @@ $config['clean_adsense']            = TRUE; // удаление рекламы g
 $config['clean_google_analytics']   = TRUE; // удаление google analytics (может работать не корректно)
 
 
-if( $_SERVER['HTTP_HOST'] == 'poland.lh' ){
+if( $_SERVER['HTTP_HOST'] == 'poland.lh' ||  $_SERVER['HTTP_HOST'] == 'pl-2.lh' ){
     $config['donor_domain']     = 'wieszjak.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
     $config['clean_helper']     = 'wieszjak_helper';
