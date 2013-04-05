@@ -29,7 +29,7 @@ function html_individual_clean_after( $html ){
     $html_obj->find('div.custom',1)->outertext = '<!--#ads_2#-->';
     $html_obj->find('div.custom',2)->outertext = '<!--#ads_3#-->';
     $html_obj->find('div.mod_avtwiodace_firmy',0)->outertext = '<!--#ads_4#-->';
-    if( \is_object( $html_obj->find('div.contentRight',0) ) )
+    if( is_object( $html_obj->find('div.contentRight',0) ) )
         $html_obj->find('div.contentRight',0)->innertext = '<!--#right_ads#--> '.$html_obj->find('div.contentRight',0)->innertext;
     
     $html = $html_obj->save();
