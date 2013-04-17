@@ -11,12 +11,12 @@ $config['clean_google_analytics']   = TRUE; // удаление google analytics
 
 
 if( $_SERVER['HTTP_HOST'] == 'poland.lh' ||  $_SERVER['HTTP_HOST'] == 'pl-2.lh' ){
-    $config['donor_domain']     = 'wieszjak.pl'; //основной домен по которому работает сайт (возможно с www)
+    $config['donor_domain']     = 'www.urzadzamy.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
-    $config['clean_helper']     = 'wieszjak_helper';
-    $config['clean_js_helper']  = 'wieszjak_js_helper'; //хелпер для очистки js
-    $config['add_helper']       = 'wieszjak_helper';
-    $config['lock_uri']         = array('/forum','/profili','/ludzie'); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
+    $config['clean_helper']     = 'urzadzamy_helper'; //хелпер для очистки html
+    $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
+    $config['add_helper']       = 'urzadzamy_helper';
+    $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
 
 elseif( $_SERVER['HTTP_HOST'] == 'obovsem.odnako.su' ){
@@ -78,10 +78,10 @@ elseif( $_SERVER['HTTP_HOST'] == 'sovetchik.odnako.su' ){
 elseif( $_SERVER['HTTP_HOST'] == 'interer.odnako.su' ){
     $config['donor_domain']     = 'www.urzadzamy.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
-    $config['clean_helper']     = 'default_helper'; //хелпер для очистки html
+    $config['clean_helper']     = 'urzadzamy_helper'; //хелпер для очистки html
     $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
-    $config['add_helper']       = 'default_helper';
-    $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
+    $config['add_helper']       = 'urzadzamy_helper';
+    $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*'  
 }
 elseif( $_SERVER['HTTP_HOST'] == 'interior-design.odnako.su' ){
     $config['donor_domain']     = 'czterykaty.pl'; //основной домен по которому работает сайт (возможно с www)
@@ -166,35 +166,35 @@ elseif( $_SERVER['HTTP_HOST'] == 'tech.odnako.su' ){
 
 
 
-$redirect_ar = array(
-    'budujemydom.tisbi.org'     => 'strojdom.odnako.su',
-    'poradnikzdrowie.tisbi.org' => 'nebolej.odnako.su',
-    'podroze.tisbi.org'         => 'puteshestvie.odnako.su',
-    'tablety.tisbi.org'         => 'planshet.odnako.su',
-    'ladnydom.tisbi.org'        => 'horoshij-dom.odnako.su',
-    'poradnikdomowy.tisbi.org'  => 'sovetchik.odnako.su',
-    'urzadzamy.tisbi.org'       => 'interer.odnako.su',
-    'czterykaty.tisbi.org'      => 'interior-design.odnako.su',
-    'muratorplus.tisbi.org'     => 'stroimsa.odnako.su',
-    'e-ogrody.tisbi.org'        => 'sad.odnako.su',
-    'superauto24.tisbi.org'     => 'auto24.odnako.su',
-    'wysokieobcasy.tisbi.org'   => 'nakablukah.odnako.su',
-    'domosfera.tisbi.org'       => 'domosfera.odnako.su',
-    'zdrowie.tisbi.org'         => 'zdorovie.odnako.su', //ga
-    'kobieta.tisbi.org'         => 'ledi.odnako.su',
-    'podroze-gazeta.tisbi.org'  => 'kanikuly.odnako.su',
-    'technologie.tisbi.org'     => 'tech.odnako.su',
-    'wieszjak.tisbi.org'        => 'obovsem.odnako.su'
-);
-
-
-if( isset( $redirect_ar[$_SERVER['HTTP_HOST']] ) ){
-    $new_domain = $redirect_ar[$_SERVER['HTTP_HOST']];
-    
-    $new_url = 'http://'.$new_domain.$_SERVER['REQUEST_URI'];
-    
-    header("HTTP/1.1 301 Moved Permanently");
-    header("Location: ".$new_url);
-    exit();
-}
+//$redirect_ar = array(
+//    'budujemydom.tisbi.org'     => 'strojdom.odnako.su',
+//    'poradnikzdrowie.tisbi.org' => 'nebolej.odnako.su',
+//    'podroze.tisbi.org'         => 'puteshestvie.odnako.su',
+//    'tablety.tisbi.org'         => 'planshet.odnako.su',
+//    'ladnydom.tisbi.org'        => 'horoshij-dom.odnako.su',
+//    'poradnikdomowy.tisbi.org'  => 'sovetchik.odnako.su',
+//    'urzadzamy.tisbi.org'       => 'interer.odnako.su',
+//    'czterykaty.tisbi.org'      => 'interior-design.odnako.su',
+//    'muratorplus.tisbi.org'     => 'stroimsa.odnako.su',
+//    'e-ogrody.tisbi.org'        => 'sad.odnako.su',
+//    'superauto24.tisbi.org'     => 'auto24.odnako.su',
+//    'wysokieobcasy.tisbi.org'   => 'nakablukah.odnako.su',
+//    'domosfera.tisbi.org'       => 'domosfera.odnako.su',
+//    'zdrowie.tisbi.org'         => 'zdorovie.odnako.su', //ga
+//    'kobieta.tisbi.org'         => 'ledi.odnako.su',
+//    'podroze-gazeta.tisbi.org'  => 'kanikuly.odnako.su',
+//    'technologie.tisbi.org'     => 'tech.odnako.su',
+//    'wieszjak.tisbi.org'        => 'obovsem.odnako.su'
+//);
+//
+//
+//if( isset( $redirect_ar[$_SERVER['HTTP_HOST']] ) ){
+//    $new_domain = $redirect_ar[$_SERVER['HTTP_HOST']];
+//    
+//    $new_url = 'http://'.$new_domain.$_SERVER['REQUEST_URI'];
+//    
+//    header("HTTP/1.1 301 Moved Permanently");
+//    header("Location: ".$new_url);
+//    exit();
+//}
 

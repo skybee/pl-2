@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');?>
 
 
-<div style="height: 90px;"></div>
+<div style="height: 140px;"></div>
 <script type="text/javascript"><!--
     google_ad_client = "ca-pub-0680772519469189";
     /* Tablety Top */
