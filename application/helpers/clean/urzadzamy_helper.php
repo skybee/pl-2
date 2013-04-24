@@ -36,7 +36,8 @@ function html_individual_clean_after( $html ){
     $html_obj->find('.gaztz',0)->outertext = ''; //печатные журналы
     $html_obj->find('.top_menu',0)->innertext = ''; //шапка с поиском
     $html_obj->find('.ads',0)->innertext = '<!--#top_ads-->'; //верхний рекламный блок
-    $html_obj->find('.right_column',0)->innertext = '<div><!--#right_ads--></div>'.$html_obj->find('.right_column',0)->innertext; //правый блок рекламы
+    if( $html_obj->find('.right_column',0) )
+        $html_obj->find('.right_column',0)->innertext = '<div><!--#right_ads--></div>'.$html_obj->find('.right_column',0)->innertext; //правый блок рекламы
     $html_obj->find('.twitter',0)->outertext = ''; //twitter
     
     $html = $html_obj->save();

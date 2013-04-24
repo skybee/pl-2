@@ -21,7 +21,7 @@ class download_lib {
         $http_code  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         
-        if($http_code >= 404 ){ show_404(); exit(); }
+        if($http_code >= 404 ){ show_404( 'Load error. Code>=404 - '.$url); exit(); }
 
         return $content;
     }

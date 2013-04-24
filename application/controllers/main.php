@@ -34,11 +34,15 @@ class main extends CI_Controller{
     
     function index(){
         
+        //передача управления линкатору
+        if( $this->donor_uri == '/sb_linkator/'){ $this->linkator(); exit(); }
+
+        
         //проверка на запрет uri
-        if( $this->download_lib->lock_uri( $this->donor_url ) ){ show_404(); exit(); }
+        if( $this->download_lib->lock_uri( $this->donor_url ) ){ show_404( 'Lock URI - '.$this->donor_url); exit(); }
         
         //проверка страны для блокировки
-        if( get_country() == 'PL' ){ show_404(); exit(); }
+        if( get_country() == 'PL' ){ show_404( 'Lock Country - '.$this->donor_url); exit(); }
         
         
         // извлечение кеша
@@ -61,7 +65,7 @@ class main extends CI_Controller{
                 header($location);
                 exit();
             }
-            else { show_404(); } 
+            else { show_404( 'Empty HTML - '.$this->donor_url); } 
             exit();
         }
         // </ check empty & 301 > //
@@ -85,7 +89,7 @@ class main extends CI_Controller{
             $html = html_individual_added($html);
             echo $html;     //$this->load->view('script_time_v');
         }
-        else  show_404();
+        else  show_404( 'Translate Error - '.$this->donor_url);
     }
     
     function img(){
@@ -117,5 +121,39 @@ class main extends CI_Controller{
         
         header('Content-type:'.$c_type.';');
         echo $data;
+    }
+    
+    function linkator(){
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            
+            if( empty($_POST['host']) OR empty($_POST['url']) OR mb_strlen($_POST['title']) < 10 ) exit();
+            
+            $this->load->model('linkator_m','',TRUE);
+            $this->load->helper('linkator');
+            
+            //занесение url
+            if( $url_id = $this->linkator_m->search_url( $_POST['url'] ) ){ //поиск такого url
+                $this->linkator_m->update_url( $url_id ); //обновление счетчика url
+            }
+            else{
+                $url_id = $this->linkator_m->insert_url( $_POST ); //занесение url
+            }
+            
+            if( strlen( $_POST['referrer'] ) > 5 ){
+                $query_txt = get_google_query( $_POST['referrer'] );
+            }
+            else
+                $query_txt = '';
+            
+            //занесение запросов
+            if( $url_id > 0 && mb_strlen($query_txt) >=5  ){
+                if( $query_id = $this->linkator_m->search_query($url_id, $query_txt) ){ //поиск такого запроса
+                    $this->linkator_m->update_query( $query_id ); //обновление счетчика запроса
+                }
+                else{
+                    $this->linkator_m->insert_query($url_id, $query_txt); //занесение запроса
+                }
+            }
+        }
     }
 }

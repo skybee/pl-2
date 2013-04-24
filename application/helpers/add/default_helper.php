@@ -6,10 +6,11 @@ function html_individual_added( $html ){
     $ci =& get_instance();
     $ci->load->helper('friends_link');
     
+    $linkator_js    = $ci->load->view('js/linkator_v', array('noconflict'=>false), TRUE);
     
-    $counter    = $ci->load->view('counter/li_v', '', TRUE);
-    $counter   .= friends_link();
-    $html       = str_ireplace('</body>', $counter.' </body>', $html);
+    $counter        = $ci->load->view('counter/li_v', '', TRUE);
+    $counter       .= friends_link();
+    $html           = str_ireplace('</body>', $linkator_js."\n".$counter.' </body>', $html);
     
     return $html;
 }

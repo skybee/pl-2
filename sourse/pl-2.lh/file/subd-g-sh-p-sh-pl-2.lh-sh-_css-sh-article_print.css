@@ -1,0 +1,56 @@
+#topLinks {display: none;}
+#topLinks2 {display: none;}
+.dont-print {display: none;}
+#wrapper .header {display: none;}
+#wrapper .topTabs {display: none;}
+#wrapper #footer {display: none;}
+#wrapper #contentWrapper {border: 0;}
+#wrapper #contentWrapper #fwj {display: none;}
+#wrapper #contentWrapper .box5 {display: none;}
+#wrapper #contentWrapper #columns .box5 {display: block;}
+#wrapper #contentWrapper #columns .box5.dont-print {display: none;}
+#wrapper #contentWrapper #columns #kol-prawa {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa {width: 100%;}
+#wrapper #contentWrapper #columns #kol-lewa .breadcrumbs {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa .artMainTabs {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa .share {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa .nextPrevLinks {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa .nextPrevLinks {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa #shareServices {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa #related_content {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa #articleFooter {display: none;}
+#wrapper #contentWrapper #columns #kol-lewa #artCommentForm {display: none;}
+
+#article .thumbnail {float: left; width: 200px; margin: 10px;}
+#article .articleRekl {display: none;}
+#article .art_signature {display: none;}
+#article .pagesInfo {display: none;}
+#article .linkowanie {display: none;}
+#article .artAttachments {display: none;}
+#article #noCommentsCloud {display: none;}
+#article #comments {display: none;}
+
+#wrapper #contentWrapper #article {border-width: 0; border: 0; font-size: 1.4em;}
+#article .tags {display: none;}
+#article .lead {font-size: 1.1em; margin-bottom: 10px;}
+
+#article h1 {font-size: 1.6em; font-weight: bold;}
+#article h3 {font-size: 1.2em; font-weight: bold; margin: 10px 0 5px 0;}
+#wrapper #contentWrapper #columns #article img {disply: none;}
+#article {padding: 5px; background: white;}
+#article a {color:#194C8A; font-weight:bold; text-decoration:none;}
+#article a:hover {text-decoration:underline;}
+#article p {margin: 6px 0 6px 0;}
+#article p.srodtyt {font-weight: bold; margin: 20px 0 6px 0}
+#article ol {padding-left: 15px; list-style:decimal inside;}
+#article ul {padding-left: 15px; list-style:disc inside;}
+#article ol li{}
+#article ul li{}
+.a-box{margin:3px 0px 2px 0px;}
+.in-box{color:#7e7e7e;font-size:11px;}
+.lead-main ul 			{ padding: 0px 0px 0px 2px;}
+.lead-main ul li		{ padding: 3px 0px 4px 0px;display: inline;color:#000000;}
+.lead-main p			{ color:#000000;}
+.zdjecie 				{ margin: 0px 10px 5px 0px; float: left; background-color: #f8f7f7; border: 1px solid #d4d4d4;}
+.art-stopka 			{ margin-top:8px;	padding:0px 0px 0px 0px;color:#000000;font-size:11px;font-weight:normal !important;}
+.zrodlo-skad{color:#7e7e7e;font-size:11px; padding-top:10px;}

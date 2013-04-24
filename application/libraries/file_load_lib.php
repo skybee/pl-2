@@ -54,6 +54,10 @@ class file_load_lib {
                 break;
             case 'txt':     $content_type = 'text/plain';
                 break;
+            case 'ttf':     $content_type = 'application/x-font-opentype';
+                break;
+            case 'woff':    $content_type = 'application/x-font-woff';
+                break;
             default:        $content_type = 'text/html';
                 break;
         }

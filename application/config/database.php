@@ -48,13 +48,17 @@
 $active_group = 'default';
 $active_record = TRUE;
 
+//$db['default']['hostname'] = 's1.house-control.org.ua';
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['username'] = 'c1skybee';
+$db['default']['password'] = 'skybee-8544';
+$db['default']['database'] = 'c1poland';
+
+
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
+$db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
