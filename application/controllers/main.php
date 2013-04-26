@@ -146,7 +146,7 @@ class main extends CI_Controller{
                 $query_txt = '';
             
             //занесение запросов
-            if( $url_id > 0 && mb_strlen($query_txt) >=5  ){
+            if( $url_id > 0 && mb_strlen($query_txt) >=2  ){
                 if( $query_id = $this->linkator_m->search_query($url_id, $query_txt) ){ //поиск такого запроса
                     $this->linkator_m->update_query( $query_id ); //обновление счетчика запроса
                 }

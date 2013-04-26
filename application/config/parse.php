@@ -11,12 +11,12 @@ $config['clean_google_analytics']   = TRUE; // удаление google analytics
 
 
 if( $_SERVER['HTTP_HOST'] == 'poland.lh' ||  $_SERVER['HTTP_HOST'] == 'pl-2.lh' ){
-    $config['donor_domain']     = 'wieszjak.pl'; //основной домен по которому работает сайт (возможно с www)
-    $config['donor_charset']    = 'utf-8';
-    $config['clean_helper']     = 'wieszjak_helper';
-    $config['clean_js_helper']  = 'wieszjak_js_helper'; //хелпер для очистки js
-    $config['add_helper']       = 'wieszjak_helper';
-    $config['lock_uri']         = array('/forum','/profili','/ludzie'); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*'   
+    $config['donor_domain']     = 'www.kamery.pl'; //основной домен по которому работает сайт (возможно с www)
+    $config['donor_charset']    = 'iso-8859-2';
+    $config['clean_helper']     = 'cctv_kamery_helper'; //хелпер для очистки html
+    $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
+    $config['add_helper']       = 'cctv_default_helper';
+    $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
 
 elseif( $_SERVER['HTTP_HOST'] == 'obovsem.odnako.su' ){
@@ -164,6 +164,34 @@ elseif( $_SERVER['HTTP_HOST'] == 'tech.odnako.su' ){
     $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
 
+//============= CCTV =============//
+
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-kiev.pp.ua' ){
+    $config['donor_domain']     = 'www.kamery.pl'; //основной домен по которому работает сайт (возможно с www)
+    $config['donor_charset']    = 'iso-8859-2';
+    $config['clean_helper']     = 'cctv_kamery_helper'; //хелпер для очистки html
+    $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
+    $config['add_helper']       = 'cctv_default_helper';
+    $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
+}
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-secure.pp.ua' ){
+    $config['donor_domain']     = 'www.ctr.pl'; //основной домен по которому работает сайт (возможно с www)
+    $config['donor_charset']    = 'iso-8859-2';
+    $config['clean_helper']     = 'cctv_ctr_helper'; //хелпер для очистки html
+    $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
+    $config['add_helper']       = 'cctv_default_helper';
+    $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
+}
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-domofon.pp.ua' ){
+    $config['donor_domain']     = 'www.e-alarmy.pl'; //основной домен по которому работает сайт (возможно с www)
+    $config['donor_charset']    = 'iso-8859-2';
+    $config['clean_helper']     = 'cctv_e-alarmy_helper'; //хелпер для очистки html
+    $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
+    $config['add_helper']       = 'cctv_default_helper';
+    $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
+}
+
+else show_404();
 
 
 //$redirect_ar = array(
