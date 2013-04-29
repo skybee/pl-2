@@ -128,8 +128,8 @@ class clean_lib{
     }
     
     function css_js_url_clean( $html ){
-        $pattern = "#(['\"]http://.*?\.)(css|js)\?.*?(['\"])#i";
-        $html = preg_replace($pattern, "$1$2$3", $html);
+        $pattern = "#(src|href)(=['\"].*?\.)(css|js)\?.*?(['\"])#i";
+        $html = preg_replace($pattern, "$1$2$3$4", $html);
         
 //        preg_match_all($pattern, $html, $matches);
 //        print_r($matches);
