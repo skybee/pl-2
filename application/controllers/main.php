@@ -52,10 +52,10 @@ class main extends CI_Controller{
         }
         
         //загрузка html
-        $html   = $this->download_lib->down_with_curl( $this->donor_url );
+        $html_ar    = $this->download_lib->down_with_curl( $this->donor_url, true );
         
         // < check empty & 301 > //
-        if( empty($html) ){
+        if( empty($html_ar['content']) ){
             $location = $this->download_lib->read_location( $this->donor_url );
             if( $location ){
                 $location   = $this->clean_lib->domain_replace( $location );
@@ -69,6 +69,17 @@ class main extends CI_Controller{
             exit();
         }
         // </ check empty & 301 > //
+        
+        
+        //проверка Content-type
+        if( $this->download_lib->check_html_type( $html_ar['content-type'] ) ){
+            $html = $html_ar['content'];
+            unset( $html_ar );
+        }
+        else{
+            show_404( 'Content-Type Error - '.$this->donor_url);
+            exit();
+        }
         
         //изменение кодировки
         $html = iconv( $this->config->item('donor_charset') ,'UTF-8//IGNORE', $html );
