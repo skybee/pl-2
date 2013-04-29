@@ -1,5 +1,13 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+* Приведение ссылки к абсолютному URI
+*
+* @param string $link ссылка (абсолютный URI, абсолютный путь на сайте, относительный путь)
+* @param string $base базовый URI (можно без "http://")
+* @return string абсолютный URI ссылки
+*/
+
 function uri2absolute($link, $base){
         if (!preg_match('~^(http://[^/?#]+)?([^?#]*)?(\?[^#]*)?(#.*)?$~i', $link.'#', $matchesLink)) {
             return false;
