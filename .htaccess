@@ -5,7 +5,7 @@
     RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
     RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(jpg|jpeg|gif|png|ico)$ sourse/%{HTTP_HOST}/image/$1$2
-    RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(js|css|swf|txt|ttf|woff)$ sourse/%{HTTP_HOST}/file/$1$2
+    RewriteRule /?([\d-_a-zA-Z%\+\(\)\?\&\.]+\.)(js|css|swf|txt)$ sourse/%{HTTP_HOST}/file/$1$2
 
 # === image file ===
     RewriteCond %{REQUEST_URI} \.(jpg|jpeg|gif|png|ico)$ [NC]
@@ -14,7 +14,7 @@
     RewriteRule .*$ /index.php?c=main&m=img [L]
 
 # === other file ===
-    RewriteCond %{REQUEST_URI} \.(js|css|swf|txt|ttf|woff)$ [NC]
+    RewriteCond %{REQUEST_URI} \.(js|css|swf|txt)$ [NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule .*$ /index.php?c=main&m=file [L]
