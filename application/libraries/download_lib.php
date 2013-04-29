@@ -7,7 +7,7 @@ class download_lib {
         $this->CI->config->load('parse');
     }
     
-    function down_with_curl($url) {
+    function down_with_curl($url, $c_type = false) { //если $c_type == true возвращает массив 'content', 'content-type'  
 //        echo $url;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -17,13 +17,17 @@ class download_lib {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 //        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         
-        $content    = curl_exec($ch);
-        $http_code  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $content        = curl_exec($ch);
+        $http_code      = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $content_type   = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
         curl_close($ch);
         
         if($http_code >= 404 ){ show_404( 'Load error. Code>=404 - '.$url); exit(); }
 
-        return $content;
+        if( $c_type )
+            return array( 'content'=>$content, 'content-type'=>$content_type );
+        else
+            return $content;
     }
     
     function read_location( $url ){
@@ -61,6 +65,21 @@ class download_lib {
             
             if( stripos($url, $search) !== false )
                 return TRUE;        
+        }
+        
+        return FALSE;
+    }
+    
+    function check_html_type( $content_type ){ //проверяет переданный Content-type на соответствие HTML формату
+        
+        $type_ar = array(
+                            'text/html',
+                            'text/xml',
+                            'application/xhtml+xml'
+                        );
+        
+        foreach( $type_ar as $type ){
+            if( stripos($content_type, $type) !== false ) return TRUE;
         }
         
         return FALSE;
