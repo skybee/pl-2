@@ -37,7 +37,8 @@ class clean_lib{
             preg_match($href_pattern, $a_tag, $href_ar );
             
             if( !empty($href_ar[1]) ){
-                $absolute_url = uri2absolute( $href_ar[1], $this->domain->out ); //получение нового абсолютного URL
+//                $absolute_url = uri2absolute( $href_ar[1], $this->domain->out ); //получение нового абсолютного URL
+                $absolute_url = uri2absolute( $href_ar[1], $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ); //получение нового абсолютного URL
                 
                 $new_a_tag = preg_replace("#([\s\S]*?)href=['\"][\s\S]*?['\"]([\s\S]*?)#i", "$1href=\"".$absolute_url."\"$2", $a_tag);
                 
