@@ -25,7 +25,7 @@ function html_individual_added( $html ){
         }
     }
     
-    if( $rnd_int >= 95 ){ // sape link
+    if( $rnd_int > 95 ){ // sape link
         $link_txt = get_city_link($rand_str, 'sape_a_link_donor.txt');
     }
     //==== /получение ссылок ====//
