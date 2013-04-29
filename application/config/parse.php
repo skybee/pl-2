@@ -11,11 +11,11 @@ $config['clean_google_analytics']   = TRUE; // удаление google analytics
 
 
 if( $_SERVER['HTTP_HOST'] == 'poland.lh' ||  $_SERVER['HTTP_HOST'] == 'pl-2.lh' ){
-    $config['donor_domain']     = 'www.alkam-security.pl'; //основной домен по которому работает сайт (возможно с www)
+    $config['donor_domain']     = 'www.urzadzamy.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
-    $config['clean_helper']     = 'cctv_alkam-security_helper'; //хелпер для очистки html
+    $config['clean_helper']     = 'urzadzamy_helper'; //хелпер для очистки html
     $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
-    $config['add_helper']       = 'cctv_default_helper';
+    $config['add_helper']       = 'urzadzamy_helper';
     $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
 
