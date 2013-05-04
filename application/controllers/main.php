@@ -48,59 +48,62 @@ class main extends CI_Controller{
         // извлечение кеша
         if( $html =  $this->cache->file->get( $this->cache_name ) ){
             $html = html_individual_added($html);
-            exit($html);
-        }
-        
-        //загрузка html
-        $html_ar    = $this->download_lib->down_with_curl( $this->donor_url, true );
-        
-        // < check empty & 301 > //
-        if( empty($html_ar['content']) ){
-            $location = $this->download_lib->read_location( $this->donor_url );
-            if( $location ){
-                $location   = $this->clean_lib->domain_replace( $location );
-                $location   = $this->subdomain_lib->subd_to_uri( $location );
-                
-                header("HTTP/1.1 301 Moved Permanently");
-                header($location);
-                exit();
-            }
-            else { show_404( 'Empty HTML - '.$this->donor_url); } 
-            exit();
-        }
-        // </ check empty & 301 > //
-        
-        
-        //проверка Content-type
-        if( $this->download_lib->check_html_type( $html_ar['content-type'] ) ){
-            $html = $html_ar['content'];
-            unset( $html_ar );
+            echo $html;
+//            $this->load->view('script_time_v');
         }
         else{
-            show_404( 'Content-Type Error - '.$this->donor_url);
-            exit();
+            //загрузка html
+            $html_ar    = $this->download_lib->down_with_curl( $this->donor_url, true );
+
+            // < check empty & 301 > //
+            if( empty($html_ar['content']) ){
+                $location = $this->download_lib->read_location( $this->donor_url );
+                if( $location ){
+                    $location   = $this->clean_lib->domain_replace( $location );
+                    $location   = $this->subdomain_lib->subd_to_uri( $location );
+
+                    header("HTTP/1.1 301 Moved Permanently");
+                    header($location);
+                    exit();
+                }
+                else { show_404( 'Empty HTML - '.$this->donor_url); } 
+                exit();
+            }
+            // </ check empty & 301 > //
+
+
+            //проверка Content-type
+            if( $this->download_lib->check_html_type( $html_ar['content-type'] ) ){
+                $html = $html_ar['content'];
+                unset( $html_ar );
+            }
+            else{
+                show_404( 'Content-Type Error - '.$this->donor_url);
+                exit();
+            }
+
+            //изменение кодировки
+            $html = iconv( $this->config->item('donor_charset') ,'UTF-8//IGNORE', $html );
+
+            //обработка html (чистка)
+            $html = $this->clean_lib->html( $html );
+
+            //перевод текста
+            $html = $this->translate_lib->get_translate( $html );
+
+            if( $html ){
+                //Вставка info url 
+                $info_url = "\n<!--\n<donuri>{$this->donor_uri}</donuri>\n<thisurl>http://{$this->config->item('site_domain')}{$_SERVER['REQUEST_URI']}<thisurl>\n-->";
+                $html = str_ireplace('</body>', $info_url.'</body>', $html);
+
+                //кеширование результата и вывод
+                $this->cache->file->save( $this->cache_name, $html, $this->cache_time );
+                $html = html_individual_added($html);
+                echo $html;     
+    //            $this->load->view('script_time_v');
+            }
+            else  show_404( 'Translate Error - '.$this->donor_url);
         }
-        
-        //изменение кодировки
-        $html = iconv( $this->config->item('donor_charset') ,'UTF-8//IGNORE', $html );
-        
-        //обработка html (чистка)
-        $html = $this->clean_lib->html( $html );
-        
-        //перевод текста
-        $html = $this->translate_lib->get_translate( $html );
-        
-        if( $html ){
-            //Вставка info url 
-            $info_url = "\n<!--\n<donuri>{$this->donor_uri}</donuri>\n<thisurl>http://{$this->config->item('site_domain')}{$_SERVER['REQUEST_URI']}<thisurl>\n-->";
-            $html = str_ireplace('</body>', $info_url.'</body>', $html);
-            
-            //кеширование результата и вывод
-            $this->cache->file->save( $this->cache_name, $html, $this->cache_time );
-            $html = html_individual_added($html);
-            echo $html;     //$this->load->view('script_time_v');
-        }
-        else  show_404( 'Translate Error - '.$this->donor_url);
     }
     
     function img(){
