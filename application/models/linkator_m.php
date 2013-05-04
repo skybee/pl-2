@@ -74,4 +74,56 @@ class linkator_m extends CI_Model{
     function update_query( $id ){
         $this->db->query(" UPDATE `search_query` SET `count`=`count`+1 WHERE `id`={$id}  ");
     }
-}
+    
+    
+    //==== GET Friends Links Method ====//
+    
+    function get_rnd_host( $page_seed ){
+        $query = $this->db->query("SELECT DISTINCT `host` FROM `site_url` ORDER BY RAND({$page_seed}) LIMIT 1");
+        $row = $query->row();
+        
+        return $row->host;
+    }
+    
+    function get_rnd_host_url($host, $page_seed, $limit = 1000){
+        $query = $this->db->query(" SELECT      `id`,`url`,`title` 
+                                FROM        `site_url` 
+                                WHERE       `host` = '{$host}'
+                                ORDER BY    `count` DESC
+                                LIMIT       $limit
+                              ");
+                                
+        if( $query->num_rows() < 1 ) return FALSE;
+        
+        foreach( $query->result_array() as $row ){
+            $url_ar[] = $row;
+        }
+        
+        srand( $page_seed );
+        shuffle($url_ar);
+        srand();
+        
+        return $url_ar[0];
+    }
+    
+    function get_rnd_host_url_query($url_id, $page_seed, $limit = 100){
+        $query = $this->db->query(" SELECT      `search_text` 
+                                FROM        `search_query`
+                                WHERE       `site_url_id` = '{$url_id}'
+                                ORDER BY    `count` DESC
+                                LIMIT       $limit    
+                              ");
+                               
+        if( $query->num_rows() < 1 ) return FALSE;
+        
+        foreach( $query->result_array() as $row ){
+            $query_ar[] = $row;
+        }
+        
+        srand( $page_seed );
+        shuffle($query_ar);
+        srand();
+        
+        return $query_ar[0]['search_text'];                        
+    }
+} 
