@@ -46,7 +46,7 @@ class main extends CI_Controller{
         
         
         // извлечение кеша
-        if( $html =  $this->cache->file->get( $this->cache_name ) ){
+        if( $html = $this->cache->file->get( $this->cache_name ) ){
             $html = html_individual_added($html);
             echo $html;
 //            $this->load->view('script_time_v');
