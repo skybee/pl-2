@@ -40,6 +40,8 @@ function html_individual_clean_after( $html ){
     $html_obj->find('div#footer div.row2',0)->innertext = ''; //нижний блок (копирайт и тд)
     $html_obj->find('table.share',0)->outertext = ''; //FB поделиться
     $html_obj->find('div.artMainTabs',0)->outertext = ''; //топ кнопки в статье
+    $html_obj->find('#header_body',0)->outertext = ''; //лого и поиск    
+    $html_obj->find('.mt20 .section_title',0)->outertext = ''; //лого внизу
     
     
     $html = $html_obj->save();

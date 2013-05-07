@@ -10,16 +10,16 @@ $config['clean_adsense']            = TRUE; // удаление рекламы g
 $config['clean_google_analytics']   = TRUE; // удаление google analytics (может работать не корректно)
 
 
-if( $_SERVER['HTTP_HOST'] == 'poland.lh' ||  $_SERVER['HTTP_HOST'] == 'pl-2.lh' ){
-    $config['donor_domain']     = 'www.mdh-system.pl'; //основной домен по которому работает сайт (возможно с www)
+if( $_SERVER['HTTP_HOST'] == 'pl-2.lh' ){
+    $config['donor_domain']     = 'wieszjak.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
-    $config['clean_helper']     = 'cctv_mdh_system_helper'; //хелпер для очистки html
-    $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
-    $config['add_helper']       = 'cctv_default_helper';
-    $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
+    $config['clean_helper']     = 'wieszjak_helper';
+    $config['clean_js_helper']  = 'wieszjak_js_helper'; //хелпер для очистки js
+    $config['add_helper']       = 'wieszjak_helper';
+    $config['lock_uri']         = array('/forum','/profili','/ludzie'); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
 
-elseif( $_SERVER['HTTP_HOST'] == 'obovsem.odnako.su' || $_SERVER['HTTP_HOST'] == 'infobex.ru' ){
+elseif( $_SERVER['HTTP_HOST'] == 'infobex.ru' ){ //$_SERVER['HTTP_HOST'] == 'obovsem.odnako.su'
     $config['donor_domain']     = 'wieszjak.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
     $config['clean_helper']     = 'wieszjak_helper';
@@ -75,7 +75,7 @@ elseif( $_SERVER['HTTP_HOST'] == 'sovetchik.odnako.su' ){
     $config['add_helper']       = 'default_helper';
     $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*'   
 }
-elseif( $_SERVER['HTTP_HOST'] == 'interer.odnako.su' || $_SERVER['HTTP_HOST'] == 'apartment-style.ru' ){
+elseif( $_SERVER['HTTP_HOST'] == 'apartment-style.ru' ){ //$_SERVER['HTTP_HOST'] == 'interer.odnako.su'
     $config['donor_domain']     = 'www.urzadzamy.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
     $config['clean_helper']     = 'urzadzamy_helper'; //хелпер для очистки html
