@@ -1,5 +1,7 @@
 <?php
 header("Content-type:text/html;Charset=utf-8");
+
+if( preg_match("#(rogerbot|Exabot|MJ12bot|DotBot|Gigabot|AhrefsBot|Yahoo|msnbot|bingbot|SolomonoBot|SemrushBot|Blekkobot)#i", $_SERVER['HTTP_USER_AGENT']) ) exit('Bot Lock');
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
