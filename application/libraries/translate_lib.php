@@ -3,6 +3,12 @@
 
 class translate_lib{
     
+    private $err_msg = '';
+    
+    function get_err_msg(){
+        return $this->err_msg;
+    }
+    
     function send_post( $url, $post_ar ){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -10,29 +16,36 @@ class translate_lib{
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_TIMEOUT, 20);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_ar);
 
         $content = curl_exec($ch);
         curl_close($ch);
-
+        
         return $content;
     }
     
     function get_translate( $html ){
+        $post_ar['key']     = 'trnsl.1.1.20130804T183010Z.34edebe22254f237.66d78220c2768967ef7d49a8cd8f705c64647d49';
         $post_ar['lang']    = 'pl-ru';
         $post_ar['format']  = 'html';
         $post_ar['text']    = $html;
         
-        $translate_url      = 'http://translate.yandex.net/api/v1/tr.json/translate';
+        $translate_url      = 'https://translate.yandex.net/api/v1.5/tr.json/translate';
         
         $js_anser   = $this->send_post($translate_url, $post_ar);
         $anser_ar   = json_decode($js_anser, true);
         
+//        '<pre>'.print_r($js_anser).'</pre>';
+        
         if( $anser_ar['code'] == '200' )
             return $anser_ar['text'][0];
-        else
+        else{
+            $this->err_msg .= $anser_ar['code'];
             return FALSE;
+        }
     }
 }

@@ -102,7 +102,7 @@ class main extends CI_Controller{
                 echo $html;     
     //            $this->load->view('script_time_v');
             }
-            else  show_404( 'Translate Error - '.$this->donor_url);
+            else  show_404( 'Translate Error - Code:'.$this->translate_lib->get_err_msg().' - '.$this->donor_url );
         }
     }
     
