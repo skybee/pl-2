@@ -166,7 +166,7 @@ if( $_SERVER['HTTP_HOST'] == 'pl-2.lh' ){
 
 //============= CCTV =============//
 
-elseif( $_SERVER['HTTP_HOST'] == 'cctv-kiev.pp.ua' ){ #cctv-camera-videonabludenie.pp.ua
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-camera-videonabludenie.pp.ua' ){ #cctv-kiev.pp.ua => cctv-camera-videonabludenie.pp.ua
     $config['donor_domain']     = 'www.kamery.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'iso-8859-2';
     $config['clean_helper']     = 'cctv_kamery_helper'; //хелпер для очистки html
@@ -174,7 +174,7 @@ elseif( $_SERVER['HTTP_HOST'] == 'cctv-kiev.pp.ua' ){ #cctv-camera-videonabluden
     $config['add_helper']       = 'cctv_default_helper';
     $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
-elseif( $_SERVER['HTTP_HOST'] == 'cctv-secure.pp.ua' ){ #cctv-videonabludenie.pp.ua
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-videonabludenie.pp.ua' ){ #cctv-secure.pp.ua => cctv-videonabludenie.pp.ua
     $config['donor_domain']     = 'www.ctr.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'iso-8859-2';
     $config['clean_helper']     = 'cctv_ctr_helper'; //хелпер для очистки html
@@ -182,7 +182,7 @@ elseif( $_SERVER['HTTP_HOST'] == 'cctv-secure.pp.ua' ){ #cctv-videonabludenie.pp
     $config['add_helper']       = 'cctv_default_helper';
     $config['lock_uri']         = array('/m_kontakt.htm'); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
-elseif( $_SERVER['HTTP_HOST'] == 'cctv-domofon.pp.ua' ){ #cctv-commax.pp.ua
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-commax.pp.ua' ){ #cctv-domofon.pp.ua => cctv-commax.pp.ua
     $config['donor_domain']     = 'www.e-alarmy.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'iso-8859-2';
     $config['clean_helper']     = 'cctv_e-alarmy_helper'; //хелпер для очистки html
@@ -214,7 +214,7 @@ elseif( $_SERVER['HTTP_HOST'] == 'cctv-kamera.pp.ua' ){
     $config['add_helper']       = 'cctv_default_helper';
     $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
-elseif( $_SERVER['HTTP_HOST'] == 'cctv-cam.pp.ua' ){ #cctv-dvr-videonabludenie.pp.ua
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-dvr-videonabludenie.pp.ua' ){ #cctv-cam.pp.ua => cctv-dvr-videonabludenie.pp.ua
     $config['donor_domain']     = 'www.obserwuj.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
     $config['clean_helper']     = 'cctv_obserwuj_helper'; //хелпер для очистки html
@@ -222,7 +222,7 @@ elseif( $_SERVER['HTTP_HOST'] == 'cctv-cam.pp.ua' ){ #cctv-dvr-videonabludenie.p
     $config['add_helper']       = 'cctv_default_helper';
     $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
-elseif( $_SERVER['HTTP_HOST'] == 'cctv-camera.pp.ua' ){ #cctv-dahua.pp.ua
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-dahua.pp.ua' ){ #cctv-camera.pp.ua => cctv-dahua.pp.ua
     $config['donor_domain']     = 'www.monitoring-system.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
     $config['clean_helper']     = 'cctv_monitoring_system_helper'; //хелпер для очистки html
@@ -230,7 +230,7 @@ elseif( $_SERVER['HTTP_HOST'] == 'cctv-camera.pp.ua' ){ #cctv-dahua.pp.ua
     $config['add_helper']       = 'cctv_default_helper';
     $config['lock_uri']         = array(); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*' 
 }
-elseif( $_SERVER['HTTP_HOST'] == 'cctv-dvr-cam.pp.ua' ){ #cctv-luxcam.pp.ua
+elseif( $_SERVER['HTTP_HOST'] == 'cctv-luxcam.pp.ua' ){ #cctv-dvr-cam.pp.ua => cctv-luxcam.pp.ua
     $config['donor_domain']     = 'www.mdh-system.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
     $config['clean_helper']     = 'cctv_mdh_system_helper'; //хелпер для очистки html
