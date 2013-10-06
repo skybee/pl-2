@@ -62,7 +62,6 @@ class translate_lib{
             array('host'=>'trnsl-4.house-control.org.ua', 'key'=>'trnsl.1.1.20131002T200910Z.ddf24538ec147aa0.bb562c7f3fc2b6d5b97e7b7dae83a95dee849aaa'),
             //hc.05 yacy.netii.net
             array('host'=>'trnsl-5.house-control.org.ua', 'key'=>'trnsl.1.1.20131002T201450Z.e9081981497d2a09.bc495375d31eb9a3b553df582b480c3fa8e49535')
-            
         );
         
         $host_key = $proxy_ar[ rand(0, count($proxy_ar)-1 ) ];
