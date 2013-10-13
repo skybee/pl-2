@@ -49,7 +49,7 @@ class translate_lib{
             return FALSE;
         }
     }
-    
+     
     function translate_proxy( $url, $post_ar ){
         $proxy_ar = array(
             //hc.01 house-control.org.ua
@@ -80,6 +80,7 @@ class translate_lib{
         
         $this->err_msg .= " -proxy:{$host_key['host']}- ";
 //        file_put_contents('tmp.txt', $answer);
+//        file_put_contents('tmp.txt', "\n----------- {$host_key['host']} ----------\n".$answer , FILE_APPEND);
         
         return $answer;
     }
