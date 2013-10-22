@@ -21,6 +21,27 @@ function html_individual_clean_after( $html ){
     $html_obj = str_get_html($html);
     $html_obj->find('.layout-box-type-facebook-like',0)->innertext = '';
     $html_obj->find('.facebook',0)->outertext = '';
+    $html_obj->find('#header',0)->outertext = '';
+    $html_obj->find('#producers-logos',0)->outertext = '';
+    $html_obj->find('#product-search',0)->outertext = '';
+    $html_obj->find('#footer',0)->outertext = '';
+    $html_obj->find('#horizontal-navigation',0)->style = "background: #42AF1C;";
+    $html_obj->find('#main-container',0)->style = "border: 4px solid #42AF1C;";
+    
+    for($i=0; true; $i++){
+        if( is_object( $html_obj->find('#horizontal-navigation li', $i) ) )
+            $html_obj->find('#horizontal-navigation li', $i)->style = "background: #42AF1C;";
+        else
+            break;
+    }
+    
+    for($i=0; true; $i++){
+        if( is_object( $html_obj->find('.layout-box-header', $i) ) )
+            $html_obj->find('.layout-box-header', $i)->style = "background: #42AF1C;";
+        else
+            break;
+    }
+    
     $html_obj->find('#layout-column-0',0)->innertext = $html_obj->find('#layout-column-0',0)->innertext."\n\n<!--#cctv-links-->\n\n";
     $html = $html_obj->save();
 

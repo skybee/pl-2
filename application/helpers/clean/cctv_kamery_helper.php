@@ -14,6 +14,7 @@ function html_individual_clean_after( $html ){
     
     $html_obj = str_get_html($html);
     $html_obj->find('#cleft',0)->innertext = $html_obj->find('#cleft',0)->innertext."\n\n<!--#cctv-links-->\n\n";
+    $html_obj->find('#demo',0)->outertext = '';
     $html = $html_obj->save();
 
     

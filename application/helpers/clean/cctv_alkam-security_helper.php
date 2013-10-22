@@ -38,8 +38,18 @@ function html_individual_clean_after( $html ){
     $html_obj->find('#column_right',0)->outertext = "";
     // /уменьшение объема главной страницы
     
+    $html_obj->find('.bannery_monitoring',0)->outertext = "";
+    $html_obj->find('#widget_shop4',0)->outertext = "";
+    $html_obj->find('#header_main',0)->outertext = "";
+    $html_obj->find('#footer',0)->outertext = "";
+    $html_obj->find('#widget_shop5',0)->outertext = "";
+    $html_obj->find('#header_main_2',0)->outertext = "";
+    $html_obj->find('#widget_shop6',0)->outertext = "";
+    $html_obj->find('body',0)->style = "background-image:none; background-color:#e5e5e5;";
     
     $html_obj->find('.box_body_fun_left',0)->innertext = "\n\n<!--#cctv-links-->\n\n";
+    
+    $html_obj->find('body',0)->innertext = '<style>.box_table_list_left{ background: url("box_header_list_left.png") }</style>'.$html_obj->find('body',0)->innertext;
     $html = $html_obj->save();
 
     

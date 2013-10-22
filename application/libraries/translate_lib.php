@@ -21,24 +21,33 @@ class translate_lib{
         
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_ar);
-
+        
         $content = curl_exec($ch);
         curl_close($ch);
         
         return $content;
     }
     
+//    function bing_get_translate( $html ){
+//        $ci = &get_instance();
+//        $ci->load->library('bing_translate_lib');
+//        
+//        $answer = $ci->bing_translate_lib->get_translate( $html );
+//    }
+    
     function get_translate( $html ){
+        
         $post_ar['key']     = 'trnsl.1.1.20130804T183010Z.34edebe22254f237.66d78220c2768967ef7d49a8cd8f705c64647d49';
         $post_ar['lang']    = 'pl-ru';
         $post_ar['format']  = 'html';
         $post_ar['text']    = $html;
-        
+
         $translate_url      = 'https://translate.yandex.net/api/v1.5/tr.json/translate';
-        
+
         #$js_anser   = $this->send_post($translate_url, $post_ar);
         $js_anser   = $this->translate_proxy($translate_url, $post_ar);
         $anser_ar   = json_decode($js_anser, true);
+        
         
 //        '<pre>'.print_r($js_anser).'</pre>';
         
@@ -49,6 +58,7 @@ class translate_lib{
             return FALSE;
         }
     }
+    
      
     function translate_proxy( $url, $post_ar ){
         $proxy_ar = array(
