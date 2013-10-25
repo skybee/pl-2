@@ -49,11 +49,17 @@ $active_group = 'default';
 $active_record = TRUE;
 
 //$db['default']['hostname'] = 's1.house-control.org.ua';
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'c1skybee';
-$db['default']['password'] = 'skybee-8544';
-$db['default']['database'] = 'c1poland';
+//$db['default']['hostname'] = 'localhost';
+//$db['default']['username'] = 'c1skybee';
+//$db['default']['password'] = 'skybee-8544';
+//$db['default']['database'] = 'c1poland';
 
+
+// CCTV Param
+$db['default']['hostname'] = 's1.house-control.org.ua';
+$db['default']['username'] = 'housecon_hc';
+$db['default']['password'] = 'house-control1865';
+$db['default']['database'] = 'housecon_house';
 
 
 $db['default']['dbdriver'] = 'mysql';
