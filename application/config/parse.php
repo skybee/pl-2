@@ -11,12 +11,12 @@ $config['clean_google_analytics']   = TRUE; // удаление google analytics
 
 
 if( $_SERVER['HTTP_HOST'] == 'pl-2.lh' ){
-    $config['donor_domain']     = 'www.mdh-system.pl'; //основной домен по которому работает сайт (возможно с www)
+    $config['donor_domain']     = 'www.alkam-security.pl'; //основной домен по которому работает сайт (возможно с www)
     $config['donor_charset']    = 'utf-8';
-    $config['clean_helper']     = 'cctv_mdh_system_helper'; //хелпер для очистки html
+    $config['clean_helper']     = 'cctv_alkam-security_helper'; //хелпер для очистки html
     $config['clean_js_helper']  = 'default_js_helper'; //хелпер для очистки js
     $config['add_helper']       = 'cctv_default_helper';
-    $config['lock_uri']         = array('/cennik.php', '/index.php?d=kontakt', '/index.php?d=regulamin', '/index.php?i3,wspolpraca'); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*'
+    $config['lock_uri']         = array('/_cms/view/-1/kontakt.html','/_cms/view/151/praca-warszawa.html','/_cms/view/164/szkolenia.html','/_cart/index/koszyk.html'); // uri запрещенные к парсингу прим. '/forum/post/' не будут парситься все адреса вида '(subdomain.)donor.com/forum/post/*'
 }
 
 //elseif( $_SERVER['HTTP_HOST'] == 'infobex.ru' ){ //$_SERVER['HTTP_HOST'] == 'obovsem.odnako.su'
