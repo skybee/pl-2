@@ -42,8 +42,9 @@ class main extends CI_Controller{
         if( $this->download_lib->lock_uri( $this->donor_url ) ){ show_404( 'Lock URI - '.$this->donor_url); exit(); }
         
         //проверка страны для блокировки
-        $country = get_country();
-        if( $country == 'PL' || $country == 'UA' ){ show_404( 'Lock Country - '.$this->donor_url); exit(); }
+        $country    = get_country();
+        $al         = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        if( $country == 'PL' || $country == 'UA' || $al == 'pl' ){ show_404( 'Lock Country - '.$this->donor_url); exit(); }
         
         
         // извлечение кеша
